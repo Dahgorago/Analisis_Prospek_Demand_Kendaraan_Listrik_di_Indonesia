@@ -1,2 +1,2 @@
-matplotlib==3.8.3
-plotly==5.19.0
+matplotlib_pyplot
+plotly_express
