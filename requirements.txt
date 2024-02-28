@@ -1,2 +1,1 @@
-matplotlib_pyplot
-plotly_express
+plotly
