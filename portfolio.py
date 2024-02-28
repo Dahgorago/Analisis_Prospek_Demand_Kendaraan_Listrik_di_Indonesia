@@ -1,9 +1,7 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 import altair as alt
-import plotly.express as px
-import plotly.graph_objects as go
+import plotly
 
 st.set_page_config(
     page_title = 'Analisis Prospek Demand Kendaraan Listrik di Indonesia',
@@ -33,7 +31,7 @@ df = pd.DataFrame({
 df_melted = df.melt(id_vars=['Year'], value_vars=['Motorcycle', 'Car'], var_name='Vehicle', value_name='Unit Sales')
 
 # Create grouped bar chart
-fig = px.bar(df_melted, x='Year', y='Unit Sales', color='Vehicle',
+fig = plotly.express.bar(df_melted, x='Year', y='Unit Sales', color='Vehicle',
              labels={'Year': 'Tahun', 'Unit Sales': 'Konsumsi Bahan Bakar (Million KL)'},
              title='Konsumsi Bahan Bakar Mobil dan Motor (2015-2020)')
 
@@ -55,7 +53,7 @@ tahun = [2020, 2021, 2022, 2023]
 unit_penjualan = [125, 687, 10327, 17062]
 
 # Create bar chart
-fig = px.bar(x=tahun, y=unit_penjualan, labels={'x': 'Tahun', 'y': 'Unit Penjualan'},
+fig = plotly.express.bar(x=tahun, y=unit_penjualan, labels={'x': 'Tahun', 'y': 'Unit Penjualan'},
              title='Unit Penjualan Mobil Listrik (2020-2023)')
 
 # Set x-axis to display only integer values
@@ -82,7 +80,7 @@ unit_terjual = [7176, 5575, 1393, 615, 479, 263, 260, 206, 185, 181]
 df = pd.DataFrame({"Merek Mobil": merek_mobil, "Unit Terjual": unit_terjual})
 
 # Create the Horizontal Bar Chart
-fig = px.bar(df, x="Unit Terjual", y="Merek Mobil", orientation="h",
+fig = plotly.express.bar(df, x="Unit Terjual", y="Merek Mobil", orientation="h",
              text="Unit Terjual", title="Penjualan Mobil Listrik")
 
 # Customize the chart
@@ -121,7 +119,7 @@ df = pd.DataFrame({
 df.sort_values(by="Mobil Listrik", ascending=True, inplace=True)
 
 # Create the horizontal grouped bar chart
-fig = px.bar(df, x=["Motor Listrik", "Mobil Listrik"], y="Category", orientation="h",
+fig = plotly.express.bar(df, x=["Motor Listrik", "Mobil Listrik"], y="Category", orientation="h",
              title="Halangan dalam Membeli Kendaraan Listrik di Indonesia",
              labels={"value": "Persentase"})  
 
@@ -143,7 +141,7 @@ labels = ['Java & Bali', 'Sumatera', 'Sulawesi', 'Kalimantan', 'Lainnya']
 values = [88.1, 5.6, 2.6, 2.3, 1.4]
 
 # Membuat Donut Chart
-fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3)])
+fig = plotly.graph_objects.Figure(data=[go.Pie(labels=labels, values=values, hole=.3)])
 
 # Menampilkan di Streamlit
 st.plotly_chart(fig, use_container_width=True)
