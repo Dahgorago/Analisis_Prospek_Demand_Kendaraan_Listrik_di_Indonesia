@@ -405,6 +405,8 @@ fig = go.Figure(data=[go.Pie(labels=labels, values=values, hole=.3,textfont=dict
 # Menampilkan di Streamlit
 st.plotly_chart(fig, use_container_width=True)
 
+st.write("Sumber Data: IESR")
+
 st.write("Beberapa poin penting untuk menjadi perhatian pemerintah dan pelaku industri adalah :")
 justify_text("1. Insentif Kendaraan Listrik diperlukan terutama untuk motor listrik sehingga lebih terjangkau oleh masyarakat, selain itu terdapat juga potensi salah sasaran dari subsidi pemerintah dimana yang dapat membeli mobil listrik berharga 600 jutaan keatas adalah dari kalangan Ekonomi atas")
 justify_text("2. Distribusi lokasi dan jumlah SPKLU dan juga SPBKLU perlu ditingkatkan sehingga masyarakat lebih percaya untuk menggunakan kendaraan listrik di berbagai daerah, bukan hanya pada daerah kota besar yang notabenenya memiliki SPKLU dan SPBKLU lebih banyak dibandingkan daerah lain seperti pada jalan tol maupun kota kecil")
